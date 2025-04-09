@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class alertas_proyecto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("¿Tienes actividades para mañana, deseas echarles un vistazo? Digita 1 para Sí y 2 para No:");
+        int actividad = sc.nextInt();
+
+        if (actividad == 1) {
+            System.out.println("Para mañana tienes X actividades de Y materias");
+            System.out.print("¿Qué hora es? (en formato de 24 horas, por ejemplo 14 para 2 PM): ");
+            int hora = sc.nextInt();
+
+            int x1 = (24 - hora)+6;
+            System.out.println("Te quedan " + x1 + " horas");
+        } else {
+            System.out.println("Te lo advertí, espero te vaya bien");
+        }
+
+        sc.close();
+    }
