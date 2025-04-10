@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class gestion_tareas_proyecto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String T1, T2, T3;
+        String I1, I2, I3;
+        boolean urgencia1, urgencia2, urgencia3;
+        int prioridad;
+
+        System.out.println("Ingrese la primera tarea:");
+        T1 = sc.nextLine();
+
+        System.out.println("Ingrese la segunda tarea:");
+        T2 = sc.nextLine();
+
+        System.out.println("Ingrese la tercera tarea:");
+        T3 = sc.nextLine();
+
+        I1 = T1;
+        I2 = T2;
+        I3 = T3;
+
+        System.out.println("¿La tarea 1 es urgente? (true/false):");
+        urgencia1 = sc.nextBoolean();
+
+        if (urgencia1) {
+            I1 = T1;
+        }
+
+        System.out.println("¿La tarea 2 es urgente? (true/false):");
+        urgencia2 = sc.nextBoolean();
+
+        if (urgencia2) {
+            System.out.println("¿Es más urgente que la tarea 1? (Ingrese 1 para Sí, 0 para No):");
+            prioridad = sc.nextInt();
+            sc.nextLine(); // Limpiar buffer
+
+            if (prioridad == 1) {
+                I2 = I1;
+                I1 = T2;
+            } else {
+                I2 = T2;
+            }
+        }
+        System.out.println("¿La tarea 3 es urgente? (true/false):");
+        urgencia3 = sc.nextBoolean();
+
+        if (urgencia3) {
+            System.out.println("¿Es más urgente que la tarea 1? (Ingrese 1 para Sí, 0 para No):");
+            prioridad = sc.nextInt();
+
+            if (prioridad == 1) {
+                I3 = I2;
+                I2 = I1;
+                I1 = T3;
+            } else {
+                System.out.println("¿Es más urgente que la tarea 2? (Ingrese 1 para Sí, 0 para No):");
+                prioridad = sc.nextInt();
+
+                if (prioridad == 1) {
+                    I3 = I2;
+                    I2 = T3;
+                } else {
+                    I3 = T3;
+                }
+            }
+        }
+        System.out.println("\nOrden de tareas basado en urgencia:");
+        System.out.println("1. " + I1);
+        System.out.println("2. " + I2);
+        System.out.println("3. " + I3);
+
+        sc.close();
+    }
+}
