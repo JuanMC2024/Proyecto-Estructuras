@@ -1,0 +1,50 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class RegistroMaterias {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Queue<String> materias = new LinkedList<>();
+
+        System.out.print("Digite su nombre: ");
+        String nombre = input.nextLine();
+
+        System.out.print("Digite su número de documento: ");
+        String documento = input.nextLine();
+
+        System.out.print("Digite su carrera: ");
+        String carrera = input.nextLine();
+
+        System.out.print("Digite su semestre: ");
+        int semestre = input.nextInt();
+        input.nextLine(); 
+
+        if (semestre == 1) {
+            System.out.println("Escriba sus cuatro materias:");
+            for (int i = 1; i <= 4; i++) {
+                System.out.print("Materia " + i + ": ");
+                String materia = input.nextLine();
+                materias.add(materia);
+            }
+        } else if (semestre > 1 && semestre < 11) {
+            System.out.println("Ingrese sus seis materias (si ve menos materias escriba 'no'):");
+            for (int i = 1; i <= 6; i++) {
+                System.out.print("Materia " + i + ": ");
+                String materia = input.nextLine();
+                materias.add(materia);
+            }
+        } else {
+            System.out.println("Semestre inválido.");
+            input.close();
+            return;
+        }
+
+        System.out.println("\nSus materias son:");
+        for (String materia : materias) {
+            System.out.println("- " + materia);
+        }
+
+        input.close();
+    }
+}
