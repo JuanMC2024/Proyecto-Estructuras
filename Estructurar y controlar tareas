@@ -1,0 +1,56 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class EstructurarYControlarTareas {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Queue<String> colaSubtareas = new LinkedList<>();
+
+        System.out.println("Definiendo tareas principales...");
+
+        System.out.print("¿Tiene subtareas? (si/no): ");
+        String tieneSubtareas = input.nextLine();
+
+        if (tieneSubtareas.equalsIgnoreCase("si")) {
+            System.out.println("Ingrese las subtareas una por una. Escriba 'no' para terminar:");
+            String subtarea;
+
+            while (true) {
+                System.out.print("Subtarea: ");
+                subtarea = input.nextLine();
+
+                if (subtarea.equalsIgnoreCase("no")) {
+                    break;
+                }
+
+                colaSubtareas.add(subtarea);
+            }
+
+            System.out.print("¿Puede ejecutar la tarea sin priorizar las subtareas? (si/no): ");
+            String considerar = input.nextLine();
+
+            if (considerar.equalsIgnoreCase("si")) {
+                System.out.println("Ejecutando tarea y subtareas...");
+                while (!colaSubtareas.isEmpty()) {
+                    System.out.println("Ejecutando subtarea: " + colaSubtareas.poll());
+                }
+            } else {
+                System.out.println("Ejecutando solo la tarea principal.");
+                System.out.print("¿Desea ejecutar las subtareas ahora? (si/no): ");
+                String ejecutarAhora = input.nextLine();
+
+                if (ejecutarAhora.equalsIgnoreCase("si")) {
+                    while (!colaSubtareas.isEmpty()) {
+                        System.out.println("Ejecutando subtarea: " + colaSubtareas.poll());
+                    }
+                } else {
+                    System.out.println("Las subtareas se ejecutarán más tarde.");
+                }
+            }
+        }
+
+        System.out.println("Ejecutando solo la tarea principal.");
+        input.close();
+    }
+}
