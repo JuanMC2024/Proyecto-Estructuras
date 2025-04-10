@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class AnalisisDeProductividad {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String actividad;
+        double tiempoInicio, tiempoFin, tiempoTotal;
+        String evaluacion;
+        int ajustarPlanificacion = 0;
+
+        System.out.println("Ingrese la actividad a realizar:");
+        actividad = scanner.nextLine();
+
+        System.out.println("Iniciando seguimiento de tiempo para la actividad: " + actividad);
+        System.out.println("Ingrese el tiempo de inicio en minutos (ejemplo: 120 para 2 horas):");
+        tiempoInicio = Double.parseDouble(scanner.nextLine());
+
+        System.out.println("Presione Enter cuando finalice la actividad...");
+        scanner.nextLine();
+
+        System.out.println("Ingrese el tiempo de finalización en minutos:");
+        tiempoFin = Double.parseDouble(scanner.nextLine());
+
+        tiempoTotal = tiempoFin - tiempoInicio;
+
+        System.out.println("Tiempo invertido en la actividad: " + tiempoTotal + " minutos");
+
+        System.out.println("Evalúe su progreso en esta actividad (bueno/regular/malo):");
+        evaluacion = scanner.nextLine();
+
+        if (evaluacion.equalsIgnoreCase("regular") || evaluacion.equalsIgnoreCase("malo")) {
+            ajustarPlanificacion = 1;
+        }
+
+        if (ajustarPlanificacion == 1) {
+            System.out.println("Se recomienda ajustar la planificación para mejorar la productividad.");
+        } else {
+            System.out.println("Buen trabajo, continúe con el mismo ritmo.");
+        }
+
+        scanner.close();
+    }
+}
